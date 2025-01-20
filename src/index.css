@@ -1,0 +1,64 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --gradient-start: #1a1c2e;
+    --gradient-end: #0f1117;
+  }
+
+  body {
+    background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+  }
+}
+
+@layer components {
+  .glass-panel {
+    @apply bg-gray-800/80 backdrop-blur-lg border border-gray-700/50;
+  }
+
+  .metric-bar {
+    @apply relative h-2 bg-gray-700/50 rounded-full overflow-hidden;
+  }
+
+  .metric-bar-fill {
+    @apply absolute top-0 left-0 h-full rounded-full transition-all duration-500 ease-out;
+  }
+
+  .status-badge {
+    @apply px-3 py-1 rounded-full text-sm font-medium transition-colors duration-200;
+  }
+
+  .action-button {
+    @apply flex flex-col items-center justify-center gap-3 p-4 rounded-xl transition-all duration-200
+           hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800
+           relative overflow-hidden bg-gray-700/30;
+  }
+
+  .action-button::before {
+    content: '';
+    @apply absolute inset-0 opacity-20 transition-opacity duration-200;
+    background: radial-gradient(circle at center, currentColor 0%, transparent 70%);
+  }
+
+  .action-button:hover::before {
+    @apply opacity-30;
+  }
+
+  .action-button span {
+    @apply font-medium text-sm;
+  }
+
+  .action-button svg {
+    @apply w-6 h-6 transition-transform duration-200;
+  }
+
+  .action-button:hover svg {
+    @apply transform scale-110;
+  }
+
+  .package-card {
+    @apply glass-panel rounded-lg p-5 transition-all duration-200 hover:scale-[1.02] hover:shadow-lg;
+  }
+}
